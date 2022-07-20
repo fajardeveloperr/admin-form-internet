@@ -137,7 +137,7 @@
                                 <div class="input-group custom">
                                     <select name="utype" id="utype" class="form-control form-control-lg" >
                                         <option value="">Daftar Sebagai: </option>
-                                        <option value="MANAGER">Sales</option>
+                                        <option value="MANAGER">Superadmin</option>
                                     
                                     </select>
                                 </div>

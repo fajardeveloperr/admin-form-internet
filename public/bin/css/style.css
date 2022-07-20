@@ -2,11 +2,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-a {
-    color: transparent;
-    text-decoration: none;
-}
-
 .begin-content {
     height: 100vh;
     border: 0;

@@ -19,15 +19,12 @@
                             <!--//col-->
 
                             <div class="col-auto">
-                                <a class="btn app-btn-secondary" href="#">
-                                    <svg width="1em" height="1em" class="bi bi-download me-1" fill="currentColor"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                        <path fill-rule="evenodd"
-                                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                                    </svg>
-                                    Download CSV
+                                <a class="btn app-btn-primary" href="#">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                        </svg>
+                                    Download Sheets
                                 </a>
                             </div>
                         </div>
@@ -66,7 +63,7 @@
                                     <div class="app-card-body">
                                         <table class="table table-responsive text-left pt-2"
                                             id="datatables-{{ $item }}" style="width: 100%;">
-                                            <thead class="bg-success">
+                                            <thead class="bg-primary">
                                                 <tr class="text-center">
                                                     <th class="cell text-white align-middle text-center">No.</th>
                                                     <th class="cell text-white align-middle text-center">ID Pelanggan
@@ -78,7 +75,7 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="bg-secondary">
+                                            <tbody class="bg-dark">
                                                 @php
                                                     $id = 1;
                                                 @endphp
@@ -86,17 +83,17 @@
                                                 @foreach ($customers as $custome)
                                                     @if ($custome->class == $item)
                                                         <tr style="text-align: center;">
-                                                            <td class="align-middle text-center text-white">
+                                                            <td class="align-middle text-center text-secondary">
                                                                 {{ $id }}
                                                             </td>
-                                                            <td class="align-middle text-center text-white">
+                                                            <td class="align-middle text-center text-secondary">
                                                                 {{ $custome->id_pelanggan }}</td>
-                                                            <td class="align-middle text-center text-white">
+                                                            <td class="align-middle text-center text-secondary">
                                                                 {{ $custome->name }}</td>
-                                                            <td class="align-middle text-center text-white">
+                                                            <td class="align-middle text-center text-secondary">
                                                                 {{ $custome->status == null ? '-' : $custome->status }}
                                                             </td>
-                                                            <td class="align-middle text-center text-white">
+                                                            <td class="align-middle text-center text-secondary">
                                                                 <a wire:click="detail_customer({{ $custome->id }})"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#detail-data{{ $item }}-modal{{ $id }}"
@@ -109,7 +106,8 @@
                                                                 <a href="#"
                                                                     wire:click="delete_personal(`{{ $custome->id }}`)"
                                                                     class="btn btn-md btn-danger"><i
-                                                                        class="fa-solid fa-trash text-white"></i></a>
+                                                                        class="fa-solid fa-trash text-white"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
 
@@ -124,7 +122,9 @@
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title text-success"
                                                                             id="exampleModalLongTitle">Informasi Data
-                                                                            Personal</h5>
+                                                                
+                                                                            {{ $item == 'Personal' ? 'Personal' : 'Bussiness' }}
+                                                                        </h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
@@ -135,7 +135,7 @@
                                                                                 Form Registrasi Internet
                                                                             </p>
                                                                             <!-- Start Template Row and Column -->
-                                                                            <div class="row border rounded py-2">
+                                                                            <div class="row border rounded py-2 mx-2 mb-2">
                                                                                 <p class="p-0 m-0 ps-2 fw-bold mb-3">*)
                                                                                     Data
                                                                                     {{ $item == 'Personal' ? 'Personal' : 'Penanggung Jawab' }}
@@ -143,13 +143,232 @@
                                                                                 <div class="col-sm-6">
                                                                                     <div class="mb-3 row">
                                                                                         <label for="staticEmail"
-                                                                                            class="col-sm-2 col-form-label">Email</label>
-                                                                                        <div class="col-sm-10">
+                                                                                            class="col-sm-6 col-form-label">Name :</label>
+                                                                                        <div class="col-sm-6">
                                                                                             <input type="text"
                                                                                                 readonly
                                                                                                 class="form-control-plaintext"
                                                                                                 id="staticEmail"
-                                                                                                value="email@example.com">
+                                                                                                value=": {{ $custome->name }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">No.Identity</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->identity_number }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Email</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->email }}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Phone Number</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->phone_number }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Address</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->address }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Reference ID</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": 1234567">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6"></div>
+                                                                            </div>
+
+                                                                            <div class="row border rounded py-2 mx-2 mb-2">
+                                                                                <p class="p-0 m-0 ps-2 fw-bold mb-3">*)
+                                                                                    Data
+                                                                                    {{ $item == 'Personal' ? 'Billing' : 'Penanggung Jawab' }}
+                                                                                </p>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Name :</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->name }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Phone Number</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->phone_number }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Email</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->email }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Email Alternatif 1</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": fajarofficial1511@gmail.com">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Email Alternatif 2</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": fajar@gmail.com">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6"></div>
+                                                                            </div>
+
+                                                                            <div class="row border rounded py-2 mx-2 mb-2">
+                                                                                <p class="p-0 m-0 ps-2 fw-bold mb-3">*)
+                                                                                    Data
+                                                                                    {{ $item == 'Personal' ? 'Teknis' : 'Penanggung Jawab' }}
+                                                                                </p>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Name :</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->name }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Phone Number</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->phone_number }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Email</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->email }}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6"></div>
+                                                                            </div>
+
+                                                                            <div class="row border rounded py-2 mx-2 mb-2">
+                                                                                <p class="p-0 m-0 ps-2 fw-bold mb-3">*)
+                                                                                    Data
+                                                                                    {{ $item == 'Personal' ? 'Layanan' : 'Penanggung Jawab' }}
+                                                                                </p>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Service :</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->service_package }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Photo KTP Identity</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->id_photo_url }}">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="staticEmail"
+                                                                                            class="col-sm-6 col-form-label">Photo Selfie Identity</label>
+                                                                                        <div class="col-sm-6">
+                                                                                            <input type="text"
+                                                                                                readonly
+                                                                                                class="form-control-plaintext"
+                                                                                                id="staticEmail"
+                                                                                                value=": {{ $custome->email }}">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -166,6 +385,11 @@
                                                             $id++;
                                                         @endphp
                                                     @endif
+
+                                                    {{-- @empty    
+                                                    <td class="text-white justify-center">
+                                                        Maaf Data Tidak Tersedia!!!
+                                                    </> --}}
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -174,8 +398,17 @@
                             </div>
                         @endforeach
                         <!--//tab-pane-->
+
+                        {{-- <nav class="app-pagination">
+                            <ul class="pagination justify-content-center">
+                                {{ $customers->links() }}
+                            </ul>
+                        </nav> --}}
+
                     </div>
                     <!--//tab-content-->
+
+
                 </div>
             </div>
         </div>

@@ -228,10 +228,10 @@
                             <table class="table app-table-hover mb-0 text-left">
                                 <thead>
                                     <tr class="text-center">
-                                        <th class="cell">Tersimpan</th>
+                                        <th class="cell">Name</th>
                                         <th class="cell">Email</th>
-                                        <th class="cell">Nama</th>
                                         <th class="cell">Jabatan</th>
+                                        <th class="cell">Tersimpan</th>
                                         <th class="cell">Aksi</th>
                                     </tr>
                                 </thead>
@@ -239,22 +239,22 @@
                                     @forelse ($pengguna as $peng)
                                         <tr style="text-align: center;">
                                             <td>
-                                                {{ $peng->created_at}}
+                                                {{ $peng->name }}
                                             </td>
                                             <td>
                                                 {{ $peng->email }}
                                             </td>
                                             <td>
-                                                {{ $peng->name }}
+                                               {{ $peng->utype }}
                                             </td>
                                             <td>
-                                               {{ $peng->utype }}
+                                                {{ $peng->created_at}}
                                             </td>
                 
                                             <td>
-                                                <a data-bs-toggle="modal" data-bs-target="#delete-data-modal" wire:click="pengguna_lihat_password" class="btn btn-md btn-warning" href="#"><i class="fa-solid fa-users-viewfinder"></i></a>
-                                                <a data-bs-toggle="modal" data-bs-target="#update-data-modal" wire:click="pengguna_edit" class="btn btn-md btn-info" href="#"><i class="fa-solid fa-user-pen"></i></a>
-                                                <a data-bs-toggle="modal" data-bs-target="#delete-data-modal" wire:click="pengguna_destroy" class="btn btn-md btn-danger" href="#"><i class="fa-solid fa-trash-arrow-up"></i></a>
+                                                <a data-bs-toggle="modal" data-bs-target="#delete-data-modal"  class="btn btn-md btn-warning" href="#"><i class="fa-solid fa-users-viewfinder"></i></a>
+                                                <a data-bs-toggle="modal" data-bs-target="#update-data-modal"  class="btn btn-md btn-info" href="#"><i class="fa-solid fa-user-pen"></i></a>
+                                                <a data-bs-toggle="modal" data-bs-target="#delete-data-modal"  class="btn btn-md btn-danger" href="#"><i class="fa-solid fa-trash-arrow-up"></i></a>
                                             </td>
                                         </tr>
                                         @empty

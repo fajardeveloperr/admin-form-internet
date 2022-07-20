@@ -6,8 +6,8 @@
     <!-- Page Specific JS -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
-<script>"https://cdn.jsdelivr.net/npm/sweetalert2@9"</script>
-<script src="{{ asset('vendor/sweetalert/sweetalert2.all.js')}}"></script>
+{{-- <script>"https://cdn.jsdelivr.net/npm/sweetalert2@9"</script>
+<script src="{{ asset('vendor/sweetalert/sweetalert2.all.js')}}"></script> --}}
 
 
  
