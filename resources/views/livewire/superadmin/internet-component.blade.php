@@ -1,4 +1,16 @@
 <div>
+    <div>
+        @if(Session::has('message_success'))
+        <h6 class="alert alert-success" role="alert">{{ Session::get('message_success') }}</h6>
+        @endif
+        @if(Session::has('message_update'))
+            <h6 class="alert alert-success" role="alert">{{ Session::get('message_update') }}</h6>
+        @endif
+
+        @if(Session::has('message_failed'))
+            <h6 class="alert alert-success" role="alert">{{ Session::get('message_failed') }}</h6>
+        @endif
+        </div>
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
             <div class="row g-3 mb-4 align-items-center justify-content-between">
@@ -19,12 +31,12 @@
                             <!--//col-->
 
                             <div class="col-auto">
-                                <a class="btn app-btn-primary" href="#">
+                                <a class="btn app-btn-primary" wire:click='exportexcel' onclick="window.refresh()">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                                         <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                                         </svg>
-                                    Download Sheets
+                                    Download CSV
                                 </a>
                             </div>
                         </div>
@@ -122,7 +134,7 @@
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title text-success"
                                                                             id="exampleModalLongTitle">Informasi Data
-                                                                
+
                                                                             {{ $item == 'Personal' ? 'Personal' : 'Bussiness' }}
                                                                         </h5>
                                                                         <button type="button" class="btn-close"
@@ -176,7 +188,7 @@
                                                                                                 value=": {{ $custome->email }}">
                                                                                         </div>
                                                                                     </div>
-                                                                                    
+
                                                                                     <div class="mb-3 row">
                                                                                         <label for="staticEmail"
                                                                                             class="col-sm-6 col-form-label">Phone Number</label>
@@ -356,7 +368,7 @@
                                                                                                 readonly
                                                                                                 class="form-control-plaintext"
                                                                                                 id="staticEmail"
-                                                                                                value=": {{ $custome->id_photo_url }}">
+                                                                                                value=": ">
                                                                                         </div>
                                                                                     </div>
 
@@ -368,7 +380,7 @@
                                                                                                 readonly
                                                                                                 class="form-control-plaintext"
                                                                                                 id="staticEmail"
-                                                                                                value=": {{ $custome->email }}">
+                                                                                                value=": ">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -385,11 +397,6 @@
                                                             $id++;
                                                         @endphp
                                                     @endif
-
-                                                    {{-- @empty    
-                                                    <td class="text-white justify-center">
-                                                        Maaf Data Tidak Tersedia!!!
-                                                    </> --}}
                                                 @endforeach
                                             </tbody>
                                         </table>

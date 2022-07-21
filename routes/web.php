@@ -21,23 +21,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/new-member', [HomeController::class, 'newcustomerclass']);
-Route::get('/new-member/personal/{id_customer}', [NewCustomerController::class, 'indexPersonal']);
-Route::post('/new-member/personal', [NewCustomerController::class, 'storePersonal']);
-Route::get('/new-member/bussiness/{id_customer}', [NewCustomerController::class, 'indexBussiness']);
-Route::post('/new-member/bussiness/', [NewCustomerController::class, 'storeBussiness']);
-Route::get('/old-member', [OldCustomerController::class, 'index']);
-Route::post('/old-member/{class_customer}/{id_customer}', [OldCustomerController::class, 'showDataCustomer']);
+// Route::get('/', [HomeController::class, 'index']);
+// Route::get('/new-member', [HomeController::class, 'newcustomerclass']);
+// Route::get('/new-member/personal/{id_customer}', [NewCustomerController::class, 'indexPersonal']);
+// Route::post('/new-member/personal', [NewCustomerController::class, 'storePersonal']);
+// Route::get('/new-member/bussiness/{id_customer}', [NewCustomerController::class, 'indexBussiness']);
+// Route::post('/new-member/bussiness/', [NewCustomerController::class, 'storeBussiness']);
+// Route::get('/old-member', [OldCustomerController::class, 'index']);
+// Route::post('/old-member/{class_customer}/{id_customer}', [OldCustomerController::class, 'showDataCustomer']);
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 
-Route::middleware(['auth:sanctum','verified'])->group(function () 
+Route::middleware(['auth:sanctum','verified'])->group(function ()
 {
-    Route::get('/dashboard', HomeComponent::class)->name('dashboard');
+    Route::get('/home', HomeComponent::class)->name('home');
+    Route::get('/customer', InternetComponent::class)->name('customer');
+    // Route::get('/pengguna', PenggunaComponent::class)->name('pengguna');
     // Route::get('/customer', InternetComponent::class)->name('customer');
 });
 
@@ -60,13 +62,12 @@ Route::middleware(['auth:sanctum','verified'])->group(function ()
 
 
 // Role Manager //
-Route::middleware(['auth:sanctum','auth.manager','verified'])->group(function()
-{
-    Route::get('/dashboard', HomeComponent::class)->name('dashboard');
-    Route::get('customer', InternetComponent::class)->name('customer');
-    Route::get('pengguna', PenggunaComponent::class)->name('pengguna');
-    
-});
+// Route::middleware(['auth:sanctum','auth.manager','verified'])->group(function()
+// {
+    // Route::get('dashboard', HomeComponent::class)->name('dashboard');
+
+
+// });
 
 
 

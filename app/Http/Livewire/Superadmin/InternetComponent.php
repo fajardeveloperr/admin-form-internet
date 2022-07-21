@@ -8,6 +8,10 @@ use Livewire\WithPagination;
 
 use Livewire\Component;
 
+use Excel;
+
+use App\Exports\CustomersExport;
+
 class InternetComponent extends Component
 
 {
@@ -18,36 +22,25 @@ class InternetComponent extends Component
 
     public $search;
 
+
+    public function exportexcel()
+    {
+        return Excel::download(new CustomersExport, 'excels.xlsx');
+        session()->flash('message_success','Export Data Berhasil di Download');
+    }
+
     public function delete_personal($id)
     {
 
         $delete_personal = Customer::find($id);
         $delete_personal->delete();
-        $this->dispatchBrowserEvent('swal', [
-            'title' => 'Feedback Saved',
-            'timer'=>3000,
-            'icon'=>'success',
-            'toast'=>true,
-            'position'=>'top-right'
-        ]);
-        
-        
-
+        session()->flash('message_failed', 'Data User berhasil dihapus!');
     }
-
-    public function approved($approved)
-    {
-
-        $approved = Customer::where('id',$this->id_approved)->first();
-        $approved->status = 'approved';
-        dd($approved);
-        $approved->save();
-    }
-
 
     public function render()
 
     {
+
         $customers = Customer::where('id_pelanggan', 'like', '%'.$this->search.'%')
         ->orwhere('name', 'like', '%'.$this->search.'%')
         ->orwhere('class', 'like', '%'.$this->search.'%')

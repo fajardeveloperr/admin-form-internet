@@ -25,27 +25,27 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-            'utype'=>['required'],
+            // 'utype'=>['required'],
         ])->validate();
 
-        if($input['utype'] === 'SALES')
-        {
-            $utype = 'R0!3-54les';
-        }
-        elseif($input['utype'] === 'MANAGER')
-        {
-            $utype = 'R0!3-m4n4ger';
-        }
-        elseif($input['utype'] === 'SUPERADMIN')
-        {
-            $utype = 'R0!3-5UP3RADMIN';
-        }
+        // if($input['utype'] === 'SALES')
+        // {
+        //     $utype = 'R0!3-54les';
+        // }
+        // elseif($input['utype'] === 'MANAGER')
+        // {
+        //     $utype = 'R0!3-m4n4ger';
+        // }
+        // elseif($input['utype'] === 'SUPERADMIN')
+        // {
+        //     $utype = 'R0!3-5UP3RADMIN';
+        // }
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'utype'=> $utype,
+            // 'utype'=> $utype,
         ]);
     }
 }
