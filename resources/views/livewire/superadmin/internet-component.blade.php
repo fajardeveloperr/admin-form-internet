@@ -99,7 +99,7 @@
                                                                 {{ $id }}
                                                             </td>
                                                             <td class="align-middle text-center text-secondary">
-                                                                {{ $custome->id_pelanggan }}</td>
+                                                                {{ $custome->customer_id }}</td>
                                                             <td class="align-middle text-center text-secondary">
                                                                 {{ $custome->name }}</td>
                                                             <td class="align-middle text-center text-secondary">

@@ -41,7 +41,7 @@ class InternetComponent extends Component
 
     {
 
-        $customers = Customer::where('id_pelanggan', 'like', '%'.$this->search.'%')
+        $customers = Customer::where('customer_id', 'like', '%'.$this->search.'%')
         ->orwhere('name', 'like', '%'.$this->search.'%')
         ->orwhere('class', 'like', '%'.$this->search.'%')
         ->paginate(5);

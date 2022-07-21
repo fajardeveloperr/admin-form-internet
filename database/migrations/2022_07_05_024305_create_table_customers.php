@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('id_pelanggan');
+            $table->string('customer_id');
             $table->string('name');
             $table->text('address');
             $table->enum('class', ['Personal', 'Bussiness']);

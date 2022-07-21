@@ -10,6 +10,7 @@ class Customer extends Model
 
     protected $keyType = 'string';
     protected $fillable = [
+        'customer_id',
         'name',
         'address',
         'class',
